@@ -1,0 +1,67 @@
+<html>
+    <head>小明的网站</head>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+
+        function checkForm(form)
+        {
+          if(form.email.value == "") {
+            alert("Error: email cannot be blank!");
+            form.email.focus();
+            return false;
+          }
+          re = /^\w+$/;
+          if(!re.test(form.email.value)) {
+            alert("Error: email must contain only letters, numbers and underscores!");
+            form.email.focus();
+            return false;
+          }
+      
+          if(form.password.value != "" && form.password.value == form.confirmPassword.value) {
+            if(form.password.value.length < 8) {
+              alert("错误：密码至少8个字符");
+              form.password.focus();
+              return false;
+            }
+            if(form.password.value == form.email.value) {
+              alert("错误：密码不能和email相同");
+              form.password.focus();
+              return false;
+            }
+            re = /[0-9]/;
+            if(!re.test(form.password.value)) {
+              alert("错误：密码必须包含数字");
+              form.password.focus();
+              return false;
+            }
+            re = /[a-z]/;
+            if(!re.test(form.password.value)) {
+              alert("错误：密码必须包含小写字母");
+              form.password.focus();
+              return false;
+            }
+            re = /[A-Z]/;
+            if(!re.test(form.password.value)) {
+              alert("错误：密码必须包含大写字母");
+              form.password.focus();
+              return false;
+            }
+          } else {
+            alert("错误：密码不一致！");
+            form.password.focus();
+            return false;
+          }
+      
+          return true;
+        }
+      </script>
+    <body>
+        <h1>注册</h1>
+        <form action="signup.php" method="POST" onsubmit="return checkForm(this);">
+            <input name="email" placeholder="邮箱" /> <br/>
+            <input name="password" type="password" placeholder="密码" /> <br/>
+            <input name="confirmPassword" type="password" placeholder="确认密码" /> <br/>
+            <input type="submit" value="注册"/>
+        </form>
+    </body>
+</html>
