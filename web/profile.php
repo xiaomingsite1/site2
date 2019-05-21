@@ -2,7 +2,7 @@
 session_start();
 $userId = $_GET["userId"];
 
-$mysqli = new mysqli('127.0.0.1', 'site2', 'wemmew-dAzfiz-4dumco', 'site2');
+$mysqli = new mysqli('127.0.0.1', 'site2', 'NyW-pPm-v6k-AXC', 'site2');
 if ($mysqli->connect_error) {
     die('Connect Error: ' . $mysqli->connect_error);
 }
